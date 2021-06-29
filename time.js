@@ -38,7 +38,7 @@ class TimeEl extends HTMLElement {
         this.redraw();
         clearInterval(this.__interval);
         // set interval
-        let diff = Math.abs(Date.now() - this.__date);
+        let diff = Math.abs(Date.now() - this.__date)/1000;
         let interval = diff > 60*60*12 ? 1000*60*60 : 1000 // diff > 12h ? 1 one hour else one second
         this.__interval = setInterval(()=>this.redraw(), interval);
     }
