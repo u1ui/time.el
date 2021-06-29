@@ -4,15 +4,15 @@ class TimeEl extends HTMLElement {
     constructor() {
         super();
         let shadowRoot = this.attachShadow({mode:'open'});
-
         shadowRoot.innerHTML = `<time><span class=replace></span><slot></slot></time>`;
         this.__timeEl = shadowRoot.querySelector('time');
         this.__slot = shadowRoot.querySelector('slot');
         this.__replaceEl = shadowRoot.querySelector('.replace');
+        this.__timeEl.setAttribute('datetime', this.getAttribute('datetime'));
     }
 	connectedCallback() {
-        this.__timeEl.setAttribute('datetime', this.getAttribute('datetime'));
         this.reset();
+        this.isConnectedX = true;
     }
     disconnectedCallback(){
         clearInterval(this.__interval);
@@ -20,11 +20,12 @@ class TimeEl extends HTMLElement {
 	static get observedAttributes() {
 		return ['datetime','lang','type'];
 	}
-	attributeChangedCallback(name, oldValue, newValue) {
-		if (oldValue === newValue) return;
+	attributeChangedCallback(name, old, value) {
+		if (old === value) return;
+        if (!this.isConnectedX) return; // attributeChangedCallback calls before connectedCallback so prevent to reset twice
 		if (name === 'datetime') {
             this.reset();
-            this.__timeEl.setAttribute('datetime', newValue);
+            this.__timeEl.setAttribute('datetime', value);
 		}
 		if (name === 'lang') this.reset();
 		if (name === 'type') this.reset();
@@ -58,7 +59,7 @@ class TimeEl extends HTMLElement {
                 return;
             }
             let show = fn(this, date);
-            this.__replaceEl.innerHTML = show;
+            if (this.__replaceEl.innerHTML !== show) this.__replaceEl.innerHTML = show; // dont redraw, but is innerHTML getter more expensive?
             this.__slot.hidden = true;
             this.__replaceEl.setAttribute('title', date);
         }
@@ -67,7 +68,11 @@ class TimeEl extends HTMLElement {
 
 const types = {
     relative(el, date){
-        return showRelativeDate(el.__lang, date);
+        var rtf = new Intl.RelativeTimeFormat(el.__lang || 'default', {numeric:'auto'})
+        var elapsed = date - Date.now();
+        for (var u in units)
+            if (Math.abs(elapsed) > units[u] || u == 'second')
+                return rtf.format(Math.round(elapsed/units[u]), u)
     },
     date(el, date) {
         let defaults = {
@@ -103,23 +108,16 @@ function langFromElement(el) {
     return langEl.getAttribute('lang') || navigator.language;
 }
 
-function showRelativeDate(lang, date){
-    var units = {
-        year  : 24 * 60 * 60 * 1000 * 365,
-        month : 24 * 60 * 60 * 1000 * 365/12,
-        day   : 24 * 60 * 60 * 1000,
-        hour  : 60 * 60 * 1000,
-        minute: 60 * 1000,
-        second: 1000
-    }
-    var rtf = new Intl.RelativeTimeFormat(lang || 'default', {numeric:'auto'})
-    var getRelativeTime = (d1, d2 = new Date()) => {
-        var elapsed = d1 - d2
-        for (var u in units)
-            if (Math.abs(elapsed) > units[u] || u == 'second')
-                return rtf.format(Math.round(elapsed/units[u]), u)
-    }
-    return getRelativeTime(date);
+
+const units = {
+    year  : 24 * 60 * 60 * 1000 * 365,
+    month : 24 * 60 * 60 * 1000 * 365/12,
+    day   : 24 * 60 * 60 * 1000,
+    hour  : 60 * 60 * 1000,
+    minute: 60 * 1000,
+    second: 1000
 }
+
+
 
 customElements.define('u1-time', TimeEl)
