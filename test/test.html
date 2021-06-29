@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+
+<head lang=en>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width">
+
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/base.css/full.css">
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/variables.min.css">
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/classless.min.css">
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/more.min.css">
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/aria.min.css">
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/simple.min.css">
+
+
+    <script src="../time.js" type=module></script>
+    <!--link rel=stylesheet href="./tabs.css"-->
+
+    <style>
+        html {
+            xbackground: linear-gradient(to bottom, #DBD65C88, #5614B088);
+        }
+        u1-tabs {
+            xbox-shadow:0 0 10px #0008;
+        }
+    </style>
+<body>
+
+<h3>Set datetime attribute</h3>
+<p lang=de>
+    Zurückgestellt: <u1-time datetime="" id=testSet></u1-time><br>
+    <button onclick="resetsTest()">reset <small>(setAttribute('datetime', Date.now() ))</small></button>
+    <script>
+        function resetsTest(){
+            testSet.setAttribute('datetime', Date.now());
+            //testSet.setAttribute('datetime', new Date(Date.now()).toISOString());
+        }
+        resetsTest();
+    </script>
+</p>
+
+<h3>English; type=relative</h3>
+<p lang=en>
+    A cold winter month <u1-time datetime="2011-11" type=relative>many years ago</u1-time>
+</p>
+
+<h3>English from &lt;head&gt; type=relative</h3>
+<p>
+    Google released Gmail Blue <u1-time datetime="2013-04-01" type=relative>on 2013-04-01</u1-time>.
+</p>
+
+<h3>Deutsch, type=relative</h3>
+<p lang=de>
+    Weltuntergang <u1-time datetime="2050-01-01" type=relative>am 2050-01-01</u1-time>.
+</p>
+
+
+
+<h3>no type and no innerHTML => relative</h3>
+<p>
+    Google released Gmail Blue <u1-time datetime="2013-04-01"></u1-time>.
+</p>
+
+<h3>type=date</h3>
+<p>
+    <u1-time datetime="2013-04-01T18:00" type=date>on 2013-04-01</u1-time>.
+</p>
+
+<h3>type=date weekday=none hour minute month=long</h3>
+<p>
+    <u1-time datetime="2013-04-01T18:00" type=date weekday="none" month=long hour minute></u1-time>.
+</p>
