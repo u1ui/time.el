@@ -18,24 +18,22 @@ class TimeEl extends HTMLElement {
         clearInterval(this.__interval);
     }
 	static get observedAttributes() {
-		return ['datetime','lang','type'];
+		return ['datetime','lang','type','weekday','year','month','day','hour','minute','second','style'];
 	}
 	attributeChangedCallback(name, old, value) {
 		if (old === value) return;
         if (!this.isConnectedX) return; // attributeChangedCallback calls before connectedCallback so prevent to reset twice
 		if (name === 'datetime') {
-            this.reset();
             this.__timeEl.setAttribute('datetime', value);
 		}
-		if (name === 'lang') this.reset();
-		if (name === 'type') this.reset();
+        this.reset();
 	}
     reset(){
         this.__type = this.getAttribute('type');
         if (this.__type === '') this.__type = 'relative';
         if (this.__type === null && this.innerHTML === '') this.__type = 'relative';
         if (!this.__type) return;
-        this.__lang = langFromElement(this);
+        this.__lang = langFromElement(this) || 'default';
         this.redraw();
         clearInterval(this.__interval);
         // set interval
@@ -61,45 +59,54 @@ class TimeEl extends HTMLElement {
             let show = fn(this, date);
             if (this.__replaceEl.innerHTML !== show) this.__replaceEl.innerHTML = show; // dont redraw, but is innerHTML getter more expensive?
             this.__slot.hidden = true;
-            this.__replaceEl.setAttribute('title', date);
+
+            // provide a title-attribute if it is relative
+            if (this.__type === 'relative') {
+                this.__replaceEl.setAttribute('title', types['date'](this, date));
+            } else {
+                this.__replaceEl.removeAttribute('title');
+            }
         }
     }
 }
 
 const types = {
     relative(el, date){
-        var rtf = new Intl.RelativeTimeFormat(el.__lang || 'default', {numeric:'auto'})
-        var elapsed = date - Date.now();
-        for (var u in units)
+        const style = el.getAttribute('style') || 'long';
+        const rtf = new Intl.RelativeTimeFormat(el.__lang, {
+            //localeMatcher: , // 'best fit', 'lookup'
+            numeric:'auto', // always, auto
+            style: style // long, narrow, short
+        });
+        const elapsed = date - Date.now();
+        for (let u in units)
             if (Math.abs(elapsed) > units[u] || u == 'second')
                 return rtf.format(Math.round(elapsed/units[u]), u)
     },
     date(el, date) {
-        let defaults = {
-            weekday: {default:'short', showAnyway:1},           // "narrow", "short" und "long".
-            //era:            // "narrow", "short" und "long".
-            year: {default:'numeric', showAnyway:1},            // "numeric" und "2-digit".
-            month: {default:'short', showAnyway:1},             // "numeric", "2-digit", "narrow", "short" und "long".
-            day: {default:'numeric', showAnyway:1},             // "numeric" und "2-digit".
-            hour: {default:'numeric', showAnyway:0},            // "numeric" und "2-digit".
-            minute: {default:'numeric', showAnyway:0},          // "numeric" und "2-digit".
-            second: {default:'numeric', showAnyway:0},          // "numeric" und "2-digit".
-            timeZoneName: {default:'short', showAnyway:0},      // "short" und "long".
+        const defaults = {
+            weekday:      {default:'short',   showAnyway:1},    // "narrow", "short", "long".
+            //era:                                              // "narrow", "short", "long".
+            year:         {default:'numeric', showAnyway:1},    // "numeric", "2-digit".
+            month:        {default:'short',   showAnyway:1},    // "numeric", "2-digit", "narrow", "short", "long".
+            day:          {default:'numeric', showAnyway:1},    // "numeric", "2-digit".
+            hour:         {default:'numeric', showAnyway:0},    // "numeric", "2-digit".
+            minute:       {default:'numeric', showAnyway:0},    // "numeric", "2-digit".
+            second:       {default:'numeric', showAnyway:0},    // "numeric", "2-digit".
+            timeZoneName: {default:'short',   showAnyway:0},    // "short", "long".
         };
-        var options = {};
+        const options = {};
         for (let [key, opts] of  Object.entries(defaults)) {
             var val = el.getAttribute(key);
             if (val === null) {
-                if (opts.showAnyway) {
-                    options[key] = opts.default;
-                }
+                if (opts.showAnyway) options[key] = opts.default;
                 continue;
             }
-            else if (val === '') options[key] = opts.default;
+            else if (val === '' || val === 'true') options[key] = opts.default;
             else if (val === 'none') options[key] = undefined;
             else options[key] = val;
         }
-        return new Intl.DateTimeFormat(el.__lang || 'default', options).format(date);
+        return new Intl.DateTimeFormat(el.__lang, options).format(date);
     },
 }
 
