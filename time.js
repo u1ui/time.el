@@ -46,8 +46,16 @@ const types = {
 }
 
 function langFromElement(el) {
-    let langEl = el.closest('[lang]') || document.head;
-    return langEl.getAttribute('lang') || navigator.language;
+    let langEl = el.closest('[lang]')||document.documentElement;
+    // todo: for tables i should check col and colgroup
+    // https://www.w3.org/TR/1999/REC-html401-19991224/struct/tables.html#alignment-inheritance
+
+    // let list = navigator.languages;
+    // try {
+    //     list = Intl.getCanonicalLocales(lang);
+    // } catch (e) {}
+    // Intl.NumberFormat(list).format();
+    return langEl.lang || navigator.language;
 }
 
 function elapsedToUnit(elapsed, min = 'second') {
