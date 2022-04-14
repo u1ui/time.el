@@ -119,10 +119,7 @@ define('u1-time', {
 
     attributeChanged(name, old, value) {
         if (!this.realConnected) return;
-        if (old === value) {
-            console.log('same')
-            return;
-        }
+        if (old === value) return;
         this.reset();
     },
     connected() {
