@@ -8,7 +8,7 @@
 ## Ussage
 
 ```html
-End of the world
+The end of the world is
 <u1-time datetime="2050-01-01">on 2050-01-01</u1-time>.
 <!-- replaces : "on 2050-01-01" with "in 28 years" -->
 ```
