@@ -46,6 +46,7 @@ Attribute        | Options                                      | Default       
 ## Todo
 - rename the style-attribute to something different
 - recognise the resolution of the given date (has time or not)
+- optional provide date as innerHTML
 
 ## Demo
 https://raw.githack.com/u1ui/time.el/main/tests/test.html  
