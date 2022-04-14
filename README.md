@@ -44,7 +44,7 @@ Attribute        | Options                                      | Default       
 
 
 ## Todo
-- rename the style-attribute to something different 
+- rename the style-attribute to something different 🙈  
 - recognise the resolution of the given date (has time or not)
 - optional provide date as innerHTML
 
