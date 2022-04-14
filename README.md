@@ -1,5 +1,10 @@
 # &lt;u1-time&gt;
 
+## Features
+
+- live changing relative dates 
+- generates a title attribute with the absolute date
+
 ## Ussage
 
 ```html
@@ -38,6 +43,9 @@ Attribute        | Options                                      | Default       
 `style`          | narrow, short, long                          | short         | `28 minutes ago` , `29 min. ago` 
 
 
+## Todo
+- rename the style-attribute to something different
+- recognise the resolution of the given date (has time or not)
 
 ## Demo
 https://raw.githack.com/u1ui/time.el/main/tests/test.html  
