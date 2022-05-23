@@ -48,6 +48,7 @@ Attribute        | Options                                      | Default       
 - recognise the resolution of the given date (has time or not)
 - optional provide date as innerHTML
 
-## Demo
+## Demos
+https://raw.githack.com/u1ui/time.el/main/tests/minimal.html  
 https://raw.githack.com/u1ui/time.el/main/tests/test.html  
 
