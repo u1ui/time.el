@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
 <html lang=en>
 <head>
-    <meta charset="utf-8">
+    <meta charset=utf-8>
     <meta name=viewport content="width=device-width">
+    <script src="../../u1/tests/test-init.js" type=module></script>
+    
 
     <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/base.css/full.css">
     <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/variables.min.css">
@@ -20,13 +22,9 @@
 <h3>Set datetime attribute</h3>
 <p lang=de>
     Zurückgestellt: <u1-time datetime="" id=testSet></u1-time><br>
-    <button onclick="resetsTest()">reset <small>(setAttribute('datetime', Date.now() ))</small></button>
+    <button onclick="testSet.setAttribute('datetime', Date.now());">reset</button>
     <script>
-        function resetsTest(){
-            testSet.setAttribute('datetime', Date.now());
-            //testSet.setAttribute('datetime', new Date(Date.now()).toISOString());
-        }
-        resetsTest();
+        testSet.setAttribute('datetime', Date.now());
     </script>
 </p>
 

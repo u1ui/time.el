@@ -40,11 +40,10 @@ Attribute        | Options                                      | Default       
 
 Attribute        | Options                                      | Default       | Description
 ---              | ---                                          | ---           | ---
-`style`          | narrow, short, long                          | short         | `28 minutes ago` , `29 min. ago` 
+`mode`           | narrow, short, long                          | short         | `28 minutes ago` , `29 min. ago` 
 
 
 ## Todo
-- rename the style-attribute to something different 🙈  
 - recognise the resolution of the given date (has time or not)
 - optional provide date as innerHTML
 

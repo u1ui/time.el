@@ -3,11 +3,11 @@ const { define, render, html, svg, css } = customElements.get('uce-lib');
 
 const types = {
     relative(el, date) {
-        const style = el.getAttribute('style') || 'long';
+        const mode = el.getAttribute('mode') || 'long';
         const rtf = new Intl.RelativeTimeFormat(el.__lang, {
             //localeMatcher: , // 'best fit', 'lookup'
             numeric: 'auto', // always, auto
-            style: style // long, narrow, short
+            style: mode // long, narrow, short
         });
         const now = Date.now();
         const elapsed = date - now;
@@ -115,7 +115,7 @@ define('u1-time', {
         this.__lang = langFromElement(this) || 'default';
         this.render();
     },
-    observedAttributes: ['datetime', 'lang', 'type', 'weekday', 'year', 'month', 'day', 'hour', 'minute', 'second', 'style'],
+    observedAttributes: ['datetime', 'lang', 'type', 'weekday', 'year', 'month', 'day', 'hour', 'minute', 'second', 'mode'],
 
     attributeChanged(name, old, value) {
         if (!this.realConnected) return;
