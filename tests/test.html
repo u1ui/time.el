@@ -26,6 +26,107 @@
     <script>
         testSet.setAttribute('datetime', Date.now());
     </script>
+
+    <form onchange="Array.from(this.elements).forEach(e=>testSet.setAttribute(e.name, e.value))">
+        <label>
+            datetime
+            <select name=datetime>
+                <option value="2031-10-10T14:48:50">2031-10-10T14:48:50
+                <option value="1999-11-10T11:38:10">1999-11-10T11:38:10
+            </select>
+        </label>
+        <label>
+            lang
+            <select name=lang>
+                <option value="de">de
+                <option value="en">en
+                <option value="es">es
+                <option value="it">it
+                <option value="fr">fr
+            </select>
+        </label>
+        <label>
+        type
+            <select name=type>
+                <option value="relative">relative (default)
+                <option value="date">date
+            </select>
+        </label>
+        <label>
+            weekday
+            <select name=weekday>
+                <option value="short">short (default)
+                <option value="narrow">narrow
+                <option value="long">long
+                <option value="none">none
+            </select>
+        </label>
+        <label>
+            year
+            <select name=year>
+                <option value="numeric">numeric (default)
+                <option value="2-digit">2-digit
+                <option value="none">none
+            </select>
+        </label>
+        <label>
+            month
+            <select name=month>
+                <option value="numeric">numeric (default)
+                <option value="2-digit">2-digit
+                <option value="narrow">narrow
+                <option value="short">short
+                <option value="long">long
+                <option value="none">none
+            </select>
+        </label>
+        <label>
+            day
+            <select name=day>
+                <option value="numeric">numeric (default)
+                <option value="2-digit">2-digit
+                <option value="none">none
+            </select>
+        </label>
+        <label>
+            hour
+            <select name=hour>
+                <option value="none">none (default)
+                <option value="numeric">numeric
+                <option value="2-digit">2-digit
+            </select>
+        </label>
+        <label>
+            minute
+            <select name=minute>
+                <option value="none">none (default)
+                <option value="numeric">numeric
+                <option value="2-digit">2-digit
+            </select>
+        </label>
+        <label>
+            second
+            <select name=second>
+                <option value="none">none (default)
+                <option value="numeric">numeric
+                <option value="2-digit">2-digit
+            </select>
+        </label>
+        <label>
+            mode
+            <select name=mode>
+                <option value="short">short (default)
+                <option value="narrow">narrow
+                <option value="long">long        
+            </select>
+        </label>
+    </form>
+    <style>
+    label {
+        display:flex;
+        gap:1rem;
+    }
+    </style>
 </p>
 
 <h3>English; type=relative</h3>
