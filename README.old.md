@@ -1,5 +1,5 @@
-# &lt;u1-time&gt; - element
-The better time-element, e.g. live changing relative dates
+# &lt;u1-time&gt;
+test
 
 ## Features
 
@@ -9,7 +9,9 @@ The better time-element, e.g. live changing relative dates
 ## Ussage
 
 ```html
-<u1-time datetime="2013-04-01T18:02" type=relative lang=de>1. April 2013 18:02</u1-time>.
+The end of the world is
+<u1-time datetime="2050-01-01">on 2050-01-01</u1-time>.
+<!-- replaces : "on 2050-01-01" with "in 28 years" -->
 ```
 
 ## Attributes
@@ -39,32 +41,14 @@ Attribute        | Options                                      | Default       
 
 Attribute        | Options                                      | Default       | Description
 ---              | ---                                          | ---           | ---
-`mode`           | narrow, short, long                          | short         | `28 minutes ago` , `29 min. ago`
+`mode`           | narrow, short, long                          | short         | `28 minutes ago` , `29 min. ago` 
+
 
 ## Todo
-
 - recognise the resolution of the given date (has time or not)
 - optional provide date as innerHTML
 
 ## Demos
-
-https://raw.githack.com/u1ui/time.el/main/tests/minimal.html  
-https://raw.githack.com/u1ui/time.el/main/tests/test.html
-
-## Install
-
-```html
-<link href="https://cdn.jsdelivr.net/gh/u1ui/time.el@3.0.0/time.min.css" rel=stylesheet>
-<script src="https://cdn.jsdelivr.net/gh/u1ui/time.el@3.0.0/time.min.js" type=module>
-```
-
-## Demo
-
 https://raw.githack.com/u1ui/time.el/main/tests/minimal.html  
 https://raw.githack.com/u1ui/time.el/main/tests/test.html  
-
-## About
-
-- MIT License, Copyright (c) 2022 <u1> (like all repositories in this organization) <br>
-- Suggestions, ideas, finding bugs and making pull requests make us very happy. ♥
 
