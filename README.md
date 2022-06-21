@@ -49,7 +49,7 @@ Attribute        | Options                                      | Default       
 ## Demos
 
 https://raw.githack.com/u1ui/time.el/main/tests/minimal.html  
-https://raw.githack.com/u1ui/time.el/main/tests/test.html
+https://raw.githack.com/u1ui/time.el/main/tests/test.html  
 
 ## Install
 
@@ -57,11 +57,6 @@ https://raw.githack.com/u1ui/time.el/main/tests/test.html
 <link href="https://cdn.jsdelivr.net/gh/u1ui/time.el@3.0.0/time.min.css" rel=stylesheet>
 <script src="https://cdn.jsdelivr.net/gh/u1ui/time.el@3.0.0/time.min.js" type=module>
 ```
-
-## Demo
-
-https://raw.githack.com/u1ui/time.el/main/tests/minimal.html  
-https://raw.githack.com/u1ui/time.el/main/tests/test.html  
 
 ## About
 
