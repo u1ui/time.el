@@ -12,6 +12,11 @@ The better time-element, e.g. live changing relative dates
 <u1-time datetime="2013-04-01T18:02" type=relative lang=de>1. April 2013 18:02</u1-time>.
 ```
 
+```css
+u1-time {
+}
+```
+
 ## Install
 
 ```html
@@ -21,8 +26,8 @@ The better time-element, e.g. live changing relative dates
 
 ## Demos
 
-[minimal.html](https://raw.githack.com/u1ui/time.el/main/tests/minimal.html)  
-[test.html](https://raw.githack.com/u1ui/time.el/main/tests/test.html)  
+[minimal.html](http://gcdn.li/u1ui/time.el@main/tests/minimal.html)  
+[test.html](http://gcdn.li/u1ui/time.el@main/tests/test.html)  
 
 ## Attributes
 
