@@ -63,8 +63,11 @@ Attribute        | Options                                      | Default       
 - recognise the resolution of the given date (has time or not)
 - optional provide date as innerHTML
 
+## Similar projects
+
+https://github.com/github/relative-time-element
+
 ## About
 
 - MIT License, Copyright (c) 2022 <u1> (like all repositories in this organization) <br>
 - Suggestions, ideas, finding bugs and making pull requests make us very happy. ♥
-
