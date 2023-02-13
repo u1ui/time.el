@@ -20,8 +20,8 @@ u1-time {
 ## Install
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/u1ui/time.el@3.0.0/time.min.css" rel=stylesheet>
-<script src="https://cdn.jsdelivr.net/gh/u1ui/time.el@3.0.0/time.min.js" type=module>
+<link href="https://cdn.jsdelivr.net/gh/u1ui/time.el@3.2.0/time.min.css" rel=stylesheet>
+<script src="https://cdn.jsdelivr.net/gh/u1ui/time.el@3.2.0/time.min.js" type=module>
 ```
 
 ## Demos
