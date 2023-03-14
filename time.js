@@ -1,5 +1,5 @@
 import 'https://unpkg.com/uce@1.16.2/new.js';
-const { define, render, html, svg, css } = customElements.get('uce-lib');
+const { define, html } = customElements.get('uce-lib');
 
 const types = {
     relative(el, date) {
@@ -126,6 +126,4 @@ define('u1-time', {
         this.reset();
     },
     disconnected() { clearInterval(this.__timer); },
-    //props: {datetime:null},
-    //bound: [],
 });
