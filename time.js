@@ -1,4 +1,4 @@
-import 'https://unpkg.com/uce@1.16.2/new.js';
+import 'https://unpkg.com/uce@1.16.5/new.js';
 const { define, html } = customElements.get('uce-lib');
 
 const types = {
