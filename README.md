@@ -6,7 +6,7 @@ The better time-element, e.g. live changing relative dates
 - live changing relative dates 
 - generates a title attribute with the absolute date
 
-## Ussage
+## Usage
 
 ```html
 <u1-time datetime="2013-04-01T18:02" type=relative lang=de>1. April 2013 18:02</u1-time>.
@@ -21,13 +21,14 @@ u1-time {
 
 ```html
 <link href="https://cdn.jsdelivr.net/gh/u1ui/time.el@x.x.x/time.min.css" rel=stylesheet>
-<script src="https://cdn.jsdelivr.net/gh/u1ui/time.el@x.x.x/time.min.js" type=module>
+<script src="https://cdn.jsdelivr.net/gh/u1ui/time.el@x.x.x/time.min.js" type=module></script>
 ```
 
 ## Demos
 
 [minimal.html](http://gcdn.li/u1ui/time.el@main/tests/minimal.html)  
 [test.html](http://gcdn.li/u1ui/time.el@main/tests/test.html)  
+
 
 ## Attributes
 
@@ -36,7 +37,6 @@ Attribute        | Options                      | Default         | Description
 `datetime`       | ISO 8601 date                | required        | e.g. `2011-10-10T14:48:00`
 `lang`           | language                     | parent lang     | If not present navigator.language is used
 `type`           | date, relative               | relative        | The way the date should be displayed
-
 
 
 ### If type=date
@@ -50,7 +50,6 @@ Attribute        | Options                                      | Default       
 `hour`           | numeric, 2-digit, none                       | none          | Format hour as `01` or `1`
 `minute`         | numeric, 2-digit, none                       | none          | Format minute as `05` or `5`
 `second`         | numeric, 2-digit, none                       | none          | Format second as `05` or `5`
-
 
 ### If type=relative
 
