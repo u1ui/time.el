@@ -29,7 +29,6 @@ u1-time {
 [minimal.html](http://gcdn.li/u1ui/time.el@main/tests/minimal.html)  
 [test.html](http://gcdn.li/u1ui/time.el@main/tests/test.html)  
 
-
 ## Attributes
 
 Attribute        | Options                      | Default         | Description
